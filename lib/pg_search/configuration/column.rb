@@ -30,7 +30,7 @@ module PgSearch
       end
 
       def column_name
-        @connection.quote_column_name(@column_name)
+        @column_name.include?('"') ? @column_name : @connection.quote_column_name(@column_name)
       end
 
       def expression
